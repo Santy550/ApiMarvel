@@ -20,9 +20,9 @@ export class HeroDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    //this.getHero();
   }
-
+/*
   getHero(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.heroService.getHero(id)
@@ -38,5 +38,5 @@ export class HeroDetailComponent implements OnInit {
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
     }
-  }
+  }*/
 }
