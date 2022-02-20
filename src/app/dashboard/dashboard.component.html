@@ -1,11 +1,18 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-  <a *ngFor="let hero of heroes"
-     routerLink="/detail/{{hero.id}}">
-    {{hero.name}}
-  </a>
-</div>
+ <div class="container" *ngIf="!showSearchResult">
+  <h2>Top Heroes</h2>
+  <div class="heroes-menu">
+    <a *ngFor="let hero of heroes"
+       routerLink="/detail/{{hero.id}}">
+      {{hero.name}}
+    </a>
+    <div class="card">
+      <!--<img src="{{heroes.thumbnail.path +'/standard_medium.'+heroes.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />-->
+      <div class="card-body">
+        <h5 class="card-title">{{ heroes.name }}</h5>
+      </div>
+    </div>
+  </div>
 
-<app-hero-search></app-hero-search>
-
+  <app-hero-search></app-hero-search>
+ </div>
 

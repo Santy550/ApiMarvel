@@ -24,7 +24,7 @@ export class HeroService {
     private messageService: MessageService) {
   }
 
- allCharacters(): Observable<any>{
+ getHeroes(): Observable<any>{
     return this.http.get(this.heroesUrl);
  }
 

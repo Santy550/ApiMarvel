@@ -12,12 +12,14 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroService) {
   }
 
-  heroes: Hero[] = [];
-
+  heroes: any = [];
+  showSearchResult:boolean = true;
 
   ngOnInit(): void {
-    this.heroService.allCharacters().subscribe((result)=>{
+    this.showSearchResult = false;
+    this.heroService.getHeroes().subscribe((result)=>{
       console.log(result);
+      this.heroes = result.data.results;
     });
   }
 
