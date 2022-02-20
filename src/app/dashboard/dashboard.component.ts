@@ -23,28 +23,4 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-/*
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
-  }*/
-
-  /* public mostrarHeroes(): void {
-    fetch('https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=cap&ts=patata&apikey=6fd43fb837b074122934aefe035690fd&hash=7bf3a80f2c82da070f2b1230ae6bc026')
-      .then(response => response.json())
-      .then(json => {
-        json.data.results.map((item: { thumbnail: { path: any; extension: any; }; name: any; }) => {
-          let url = item.thumbnail.path + item.thumbnail.extension
-          this.hero.innerHtml += `<div class = "item">
-       <img src = ${url.replace('http', 'https')}>
-        <span>${item.name}</span>
-        </div>`
-        })
-      })
-    console.log(this.hero);
-  }*/
-
-
-
-
 }
