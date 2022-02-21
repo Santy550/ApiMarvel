@@ -6,7 +6,7 @@
     <a *ngFor="let hero of heroes"
        routerLink="/detail/{{hero.id}}">
       {{hero.name}}
-      <img src="{{heroes.thumbnail.path +'/standard_medium.'+heroes.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
+      <img src="{{hero.thumbnail.path +'/standard_medium.'+hero.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
     </a>
   </div>
 
