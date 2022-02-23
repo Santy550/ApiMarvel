@@ -13,11 +13,13 @@ export class DashboardComponent implements OnInit {
   }
 
   heroes: any = [];
-  showSearchResult:boolean = true;
+  showSearchResult: boolean = true;
+  showSearchCharacter: boolean = true;
 
   ngOnInit(): void {
     this.showSearchResult = false;
-    this.heroService.getHeroes().subscribe((result)=>{
+    this.showSearchCharacter = false;
+    this.heroService.getHeroes().subscribe((result) => {
       console.log(result);
       this.heroes = result.data.results;
     });
