@@ -20,6 +20,19 @@ export class HeroDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.heroService.getHeroes().subscribe((result) => {
+      console.log(result);
+      this.hero = result.data.results;
+    });
   }
 
+
+
+  goBack() {
+
+  }
+
+  save() {
+
+  }
 }
