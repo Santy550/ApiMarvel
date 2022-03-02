@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
     this.showSearchResult = false;
     this.showSearchCharacter = false;
     this.heroService.getHeroes().subscribe((result) => {
-      console.log(result);
       this.heroes = result.data.results;
     });
   }
