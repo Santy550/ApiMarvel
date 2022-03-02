@@ -1,15 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {map, Observable} from 'rxjs';
+import {catchError, map, Observable, of, tap} from 'rxjs';
 
 import {MessageService} from './message.service';
+import {Hero} from "./hero";
 
 @Injectable({providedIn: 'root'})
 export class HeroService {
-  searchHeroes(term: string): any {
-    throw new Error('Method not implemented.');
-  }
 
   public heroesUrl = 'https://gateway.marvel.com/v1/public/characters?limit=12&ts=patata&apikey=6fd43fb837b074122934aefe035690fd&hash=7bf3a80f2c82da070f2b1230ae6bc026';  // URL to web api
 
@@ -37,11 +35,38 @@ export class HeroService {
     );
   }
 
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?nameStartsWith=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found heroes matching "${term}"`) :
+        this.log(`no heroes matching "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  }
 
-  /*getCharacterByName(characterName: string): Observable<any> {
-    const characterBYNameUrl = 'https://gateway.marvel.com:443/v1/public/characters?name=${characterName}&ts=patata&apikey=6fd43fb837b074122934aefe035690fd&hash=7bf3a80f2c82da070f2b1230ae6bc026';
-    return this.http.get(characterBYNameUrl);
-  }*/
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
+  }
 
 
 }
