@@ -26,5 +26,6 @@ export class HeroSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //this.heroes$ = this.searchTerms();
   }
 }

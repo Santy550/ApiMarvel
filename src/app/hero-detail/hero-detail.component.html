@@ -4,7 +4,9 @@
   <div>
     <label for="hero-name">Hero name: </label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
+    <br>
+    <br>
+    <img src="{{hero.thumbnail.path +'/standard_medium.'+hero.thumbnail.extension}}" width="500px" class="card-img-top" alt="Some Issue Loading Image..." />
   </div>
   <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
 </div>
