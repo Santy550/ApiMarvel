@@ -10,17 +10,17 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes: any = [];
-  showSearchResult: boolean = true;
+  heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.showSearchResult = false;
-    this.heroService.getHeroes().subscribe((result) => {
-      console.log(result);
-      this.heroes = result.data.results;
-    });
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
   }
 
 
