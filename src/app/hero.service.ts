@@ -29,8 +29,8 @@ export class HeroService {
     const heroUrl = "https://gateway.marvel.com/v1/public/characters/" + id + "?limit=1&ts=patata&apikey=6fd43fb837b074122934aefe035690fd&hash=7bf3a80f2c82da070f2b1230ae6bc026";
 
     return this.http.get(heroUrl).pipe(
-      map((res: any) => {
-        return res;
+      map((hero: any) => {
+        return hero;
       })
     );
   }
