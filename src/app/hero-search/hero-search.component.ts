@@ -21,6 +21,8 @@ export class HeroSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
+    console.log(term);
+    console.log(this.searchTerms);
     this.searchTerms.next(term);
   }
 
@@ -34,6 +36,7 @@ export class HeroSearchComponent implements OnInit {
 
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.heroService.searchHeroes(term)),
+
     );
   }
 
